@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import styles from "./popularjobcard.style";
 import { checkImageURL } from "../../../../utils";
 
-
 const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
   return (
     <TouchableOpacity
@@ -13,9 +12,9 @@ const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
       <TouchableOpacity style={styles.logoContainer(selectedJob, item)}>
         <Image
           source={{
-            uri: checkImageURL(item.employer_logo)
-            ? item.employer_logo
-            :  "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg"
+            uri: checkImageURL(item?.employer_logo)
+              ? item.employer_logo
+              : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
           }}
           resizeMode='contain'
           style={styles.logoImage}
@@ -26,12 +25,11 @@ const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
       </Text>
 
       <View style={styles.infoContainer}>
-        <Text style={styles.jobName(selectedJob, item)} numberOfLines={1}>{item.job_title}</Text>
-        <Text style={styles.location}>{item._jobcountry}</Text>
+        <Text style={styles.jobName(selectedJob, item)} numberOfLines={1}>
+          {item.job_title}
+        </Text>
+       
       </View>
-
-
-      
     </TouchableOpacity>
   );
 };
